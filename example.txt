@@ -1,0 +1,23 @@
+Release Name                    Installed     Latest    Old      Deprecated
+bitbucket-development           1.1.0                   false    false
+external-dns                    5.4.1                   false    false
+grafana-development             6.19.0                  false    false
+grafana-production              6.19.0                  false    false
+loki                            2.6.0                   false    false
+promtail                        3.8.1                   false    false
+jitsi-prd-its-jitsi-nginx       9.5.13                  false    false
+jitsi-prd                       0.2.7                   false    false
+metallb                         0.10.2                  false    false
+metrics-server                  5.10.12                 false    false
+nfs                             4.0.13                  false    false
+blackbox-prometheus-operator    5.3.0         5.3.1     true     false
+jiralert-development            0.1.9                   false    false
+jiralert-production             0.1.9                   false    false
+prometheus                      30.0.1        30.0.1    false    false
+nginx-development               1.0.2                   false    false
+nginx-production                1.0.2                   false    false
+nginx-development               9.5.16                  false    false
+nginx-production                9.5.16                  false    false
+sonarqube-8-development         1.0.23+179              false    false
+sonarqube-8-production          1.0.23+179              false    false
+sonarqube-9-development         1.2.5+179               false    false
