@@ -104,3 +104,23 @@ spec:
                 - -ec
                 - curl http://helm-upcheck/refresh
           restartPolicy: Never
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/component: helmupcheck
+  name: helm-upcheck-monitor
+  namespace: helmupcheck
+spec:
+  endpoints:
+    - interval: 10m
+      path: /metrics
+      port: web
+  namespaceSelector:
+    matchNames:
+      - helmupcheck
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: helmupcheck
+  
