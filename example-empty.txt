@@ -1,2 +1,2 @@
 No releases found
-Release Name    Installed    Latest    Old    Deprecated
+Release Name    Chart Name   Namespace  HelmVersion  Installed  Latest    Old   Deprecated

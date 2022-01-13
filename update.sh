@@ -4,7 +4,7 @@ cd /usr/src/app/web ||exit
 
 . ../env
 echo "Gathering metrics..."
-nova find > versions
+nova find --wide > versions
 transform.sh versions > metrics
 chmod 666 versions metrics || true
 echo "Done"
