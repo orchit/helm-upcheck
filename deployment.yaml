@@ -45,7 +45,7 @@ spec:
           image: orchit/helm-upcheck:latest
           imagePullPolicy: Always
           ports:
-            - name: web
+            - name: http
               containerPort: 80
               protocol: TCP
           volumeMounts:
@@ -72,6 +72,8 @@ kind: Service
 metadata:
   name: helm-upcheck
   namespace: helmupcheck
+  labels:
+    app.kubernetes.io/component: helmupcheck
 spec:
   ports:
     - port: 80
@@ -79,8 +81,6 @@ spec:
       name: http
   selector:
     app.kubernetes.io/component: helmupcheck
-
-
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -104,23 +104,3 @@ spec:
                 - -ec
                 - curl http://helm-upcheck/refresh
           restartPolicy: Never
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    app.kubernetes.io/component: helmupcheck
-  name: helm-upcheck-monitor
-  namespace: helmupcheck
-spec:
-  endpoints:
-    - interval: 10m
-      path: /metrics
-      port: web
-  namespaceSelector:
-    matchNames:
-      - helmupcheck
-  selector:
-    matchLabels:
-      app.kubernetes.io/component: helmupcheck
-  
