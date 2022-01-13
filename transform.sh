@@ -53,7 +53,7 @@ else
     fi
     echo "# HELP upcheck_helm_item Data item for a helm release chart including the status if there is an update available (old) or if it's abandoned (deprecated)."
     echo "# TYPE upcheck_helm_item gauge"
-    echo "upcheck_helm_item{release=\"$v1\",installed=\"$v2\",latest=\"$v3\",old=\"$IS_OLD\",deprecated=\"$IS_DEPRECATED\"}  1"
+    echo "upcheck_helm_item{release=\"$v1\",installed=\"$v2\",latest=\"$v3\",old=\"$IS_OLD\",deprecated=\"$IS_DEPRECATED\"}  $((IS_OLD*1+IS_DEPRECATED*2))"
   done
 fi
 echo "# HELP upcheck_helm_items_total Number of scanned helm releases."
