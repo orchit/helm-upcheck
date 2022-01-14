@@ -3,8 +3,8 @@
 echo "###############"
 echo "##### Example"
 echo "###############"
-./transform.sh example.txt
+../files/transform.sh example.txt
 echo "###############"
 echo "##### Empty"
 echo "###############"
-./transform.sh example-empty.txt
+../files/transform.sh example-empty.txt

@@ -1,7 +1,7 @@
 # Helm-Upcheck - A Helm Update Checker For Charts
 ![docker-image](https://github.com/orchit/helm-upcheck/actions/workflows/docker-image.yml/badge.svg)
 
-Current version: **v1.0.0**
+Current version: **v1.0.1**
 
 Helm-Upcheck uses nova to check the helm releases for updates. The updates are provided as text file and as prometheus metrics.
 

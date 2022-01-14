@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN mkdir -p /usr/src/app/web
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY files/nginx.conf /etc/nginx/nginx.conf
 
 RUN apk add --no-cache \
     wget \
@@ -37,10 +37,10 @@ RUN curl -LSs $NOVA_URL | tar xz && \
     chmod +x /usr/local/bin/nova && \
     nova version
 
-COPY saveEnv.sh /usr/local/bin/
-COPY transform.sh /usr/local/bin/
-COPY update.sh /usr/local/bin/
-COPY update.pm /usr/lib/perl5/vendor_perl/x86_64-linux-thread-multi/
+COPY files/saveEnv.sh /usr/local/bin/
+COPY files/transform.sh /usr/local/bin/
+COPY files/update.sh /usr/local/bin/
+COPY files/update.pm /usr/lib/perl5/vendor_perl/x86_64-linux-thread-multi/
 #COPY opt/ /opt/kube-powertools/
 RUN chmod +x /usr/local/bin/*.sh
 RUN ln -s /usr/local/bin/update.sh /docker-entrypoint.d/02-update.sh
