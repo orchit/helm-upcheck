@@ -44,9 +44,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - name: Docker Hub Description
-        uses: peter-evans/dockerhub-description@v2
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKERHUB_REPOSITORY: orchit/helm-upcheck
+#      - name: Docker Hub Description
+#        uses: peter-evans/dockerhub-description@v2
+#        env:
+#          DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#          DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+#          DOCKERHUB_REPOSITORY: orchit/helm-upcheck
