@@ -1,4 +1,7 @@
-#Helm-Upcheck - A Helm Update Checker For Charts
+# Helm-Upcheck - A Helm Update Checker For Charts
+![docker-image](https://github.com/orchit/helm-upcheck/actions/workflows/docker-image.yml/badge.svg)
+
+Current version: **v1.0.0**
 
 Helm-Upcheck uses nova to check the helm releases for updates. The updates are provided as text file and as prometheus metrics.
 
@@ -15,3 +18,9 @@ To access the service on localhost:3080 you can use kube-proxy for example:
 upcheck_helm_item contains information about individual releases. The value is 0 = ok, 1 = old, 2 = deprecated, 3 = old+deprecated
 
 upcheck_helm_items_total, upcheck_helm_items_ok_total, upcheck_helm_items_old_total, upcheck_helm_items_deprecated_total show the summarized values for convinience
+
+## Deployment
+
+For deployment modify and apply the deployment.yaml and if you use the prometheus operator, you can also apply the servicemonitor.yaml, which also includes two rules for alerts.
+
+If time permits we will also release a helm chart for it.
