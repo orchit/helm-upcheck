@@ -32,11 +32,12 @@ jobs:
             type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
             type=ref,event=branch
             type=ref,event=pr
-            type=sha
-#            type=schedule
-#            type=semver,pattern={{version}}
-#            type=semver,pattern={{major}}.{{minor}}
-#            type=semver,pattern={{major}}
+            type=ref,event=tag
+            type=sha,prefix=,suffix=,format=long
+            type=schedule
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
