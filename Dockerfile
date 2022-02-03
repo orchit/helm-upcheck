@@ -22,7 +22,7 @@ RUN curl -LSsO $KUBECTL_URL && \
     kubectl version --client
 
 # Helm
-ARG HELM_VERSION=3.7.2
+ARG HELM_VERSION=3.8.0
 ENV HELM_URL=https://get.helm.sh/helm-v"${HELM_VERSION}"-linux-amd64.tar.gz
 RUN curl -LSs $HELM_URL | tar xz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
@@ -30,7 +30,7 @@ RUN curl -LSs $HELM_URL | tar xz && \
     helm version
 
 # Nova
-ARG NOVA_VERSION=2.3.4
+ARG NOVA_VERSION=2.4.0
 ENV NOVA_URL=https://github.com/FairwindsOps/nova/releases/download/${NOVA_VERSION}/nova_${NOVA_VERSION}_linux_amd64.tar.gz
 RUN curl -LSs $NOVA_URL | tar xz && \
     mv ./nova /usr/local/bin/nova && \
