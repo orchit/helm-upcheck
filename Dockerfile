@@ -30,7 +30,7 @@ RUN curl -LSs $HELM_URL | tar xz && \
     helm version
 
 # Nova
-ARG NOVA_VERSION=2.4.0
+ARG NOVA_VERSION=3.0.1
 ENV NOVA_URL=https://github.com/FairwindsOps/nova/releases/download/${NOVA_VERSION}/nova_${NOVA_VERSION}_linux_amd64.tar.gz
 RUN curl -LSs $NOVA_URL | tar xz && \
     mv ./nova /usr/local/bin/nova && \
