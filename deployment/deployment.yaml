@@ -44,6 +44,11 @@ spec:
         - name: helm-upcheck
           image: orchit/helm-upcheck:latest
           imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "0.5"
+              ephemeral-storage: "1Gi"
           ports:
             - name: http
               containerPort: 80
@@ -65,7 +70,7 @@ spec:
       serviceAccountName: helm-upcheck
       volumes:
         - name: metrics-data
-          emptyDir: {}
+          emptyDir: { }
 ---
 apiVersion: v1
 kind: Service
@@ -88,7 +93,7 @@ metadata:
   name: helm-upcheck-refresh-job
   namespace: helmupcheck
 spec:
-  schedule: "0 * * * *"
+  schedule: "0 0 * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1

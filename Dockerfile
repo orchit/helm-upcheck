@@ -1,4 +1,4 @@
-FROM nginx:1-alpine-perl
+FROM nginx:stable-alpine-perl
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 WORKDIR /usr/src/app
 
@@ -14,15 +14,13 @@ RUN apk add --no-cache \
     tar fcgiwrap
 
 # kubectl
-ARG KUBECTL_VERSION=1.23.0
-ENV KUBECTL_URL=https://storage.googleapis.com/kubernetes-release/release/v"${KUBECTL_VERSION}"/bin/linux/amd64/kubectl
-RUN curl -LSsO $KUBECTL_URL && \
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"  && \
     mv ./kubectl /usr/local/bin/kubectl && \
     chmod +x /usr/local/bin/kubectl && \
     kubectl version --client
 
 # Helm
-ARG HELM_VERSION=3.8.0
+ARG HELM_VERSION=3.14.0
 ENV HELM_URL=https://get.helm.sh/helm-v"${HELM_VERSION}"-linux-amd64.tar.gz
 RUN curl -LSs $HELM_URL | tar xz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
@@ -30,7 +28,7 @@ RUN curl -LSs $HELM_URL | tar xz && \
     helm version
 
 # Nova
-ARG NOVA_VERSION=3.4.0
+ARG NOVA_VERSION=3.9.0
 ENV NOVA_URL=https://github.com/FairwindsOps/nova/releases/download/${NOVA_VERSION}/nova_${NOVA_VERSION}_linux_amd64.tar.gz
 RUN curl -LSs $NOVA_URL | tar xz && \
     mv ./nova /usr/local/bin/nova && \
