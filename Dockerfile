@@ -22,7 +22,7 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 # Helm
 ARG HELM_VERSION=3.14.0
 ENV HELM_URL=https://get.helm.sh/helm-v"${HELM_VERSION}"-linux-amd64.tar.gz
-RUN curl -LSs $HELM_URL | tar xz && \
+RUN curl -LSs "$HELM_URL" | tar xz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
     chmod +x /usr/local/bin/helm && \
     helm version
@@ -30,7 +30,7 @@ RUN curl -LSs $HELM_URL | tar xz && \
 # Nova
 ARG NOVA_VERSION=3.9.0
 ENV NOVA_URL=https://github.com/FairwindsOps/nova/releases/download/v${NOVA_VERSION}/nova_${NOVA_VERSION}_linux_amd64.tar.gz
-RUN curl -LSs $NOVA_URL | tar xz  && \
+RUN curl -LSs "$NOVA_URL" | tar xz  && \
     mv ./nova /usr/local/bin/nova && \
     chmod +x /usr/local/bin/nova && \
     nova version
